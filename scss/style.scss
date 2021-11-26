@@ -54,12 +54,12 @@
 
 	&__item {
 		list-style: none;
+		margin-left: 40px;
 	}
 
 	&__link {
 		position: relative;
 		color: var(--white);
-		margin-left: 40px;
 		text-decoration: none;
 		transition: 0.25s;
 	}
@@ -160,12 +160,15 @@
 
 	&__item {
 		list-style: none;
+		margin-right: 20px;
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 
 	&__link {
 		color: var(--white);
 		font-size: 2em;
-		margin-right: 20px;
 		transition: 0.25s;
 		&:hover {
 			color: var(--red);
@@ -185,6 +188,119 @@
 		margin-left: 10px;
 		&.active {
 			background: var(--white);
+		}
+		&:first-child {
+			margin-left: 0;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.main {
+		padding: 40px;
+	}
+	.header {
+		padding: 20px 40px;
+		&__toggle {
+			position: relative;
+			width: 32px;
+			height: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			z-index: 1000;
+			&._active {
+				position: fixed;
+				top: 30px;
+				right: 40px;
+			}
+			&::before {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				background: var(--white);
+				transform: translateY(-10px);
+				transition: 0.25s;
+				box-shadow: 0 10px 0 var(--white);
+			}
+			&._active::before {
+				transform: translateY(0) rotate(45deg);
+				box-shadow: 0 0 0 transparent;
+			}
+			&::after {
+				content: "";
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				background: var(--white);
+				transform: translateY(10px);
+				transition: 0.25s;
+			}
+			&._active::after {
+				transform: translateY(0) rotate(-45deg);
+			}
+		}
+		&__navigation {
+			display: none;
+			&._active {
+				position: fixed;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				background: var(--black);
+				z-index: 999;
+			}
+		}
+		&__item {
+			margin-left: 0;
+			margin: 10px 0;
+		}
+		&__link {
+			font-size: 1.5em;
+		}
+	}
+	.content {
+		&__img {
+			max-width: 100%;
+			margin-top: 30px;
+		}
+		h2 {
+			font-size: 3em;
+		}
+	}
+	.slider {
+		position: relative;
+		width: 100%;
+		height: 180px;
+		&__slides {
+			position: absolute;
+			top: 50%;
+			padding: 0;
+			flex-direction: column;
+			justify-content: center;
+		}
+		h2 {
+			font-size: 2.5em;
+			text-align: center;
+			&:last-child {
+				text-align: center;
+			}
+		}
+	}
+	.footer {
+		padding: 0 40px;
+		position: relative;
+		margin-top: 50px;
+		flex-direction: column-reverse;
+		&__icon {
+			margin-top: 40px;
 		}
 	}
 }
